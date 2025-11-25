@@ -1,0 +1,10 @@
+{
+    "name" : "CPU",
+    "worker_bin_path" : "/home/tikuta/local/src/cryosparc_worker/bin/cryosparcw",
+    "cache_path" : "/work/{{ cluster_job_id }}",
+    "send_cmd_tpl" : "{{ command }}",
+    "qsub_cmd_tpl" : "qsub {{ script_path_abs }}",
+    "qstat_cmd_tpl" : "qstat -j {{ cluster_job_id }}",
+    "qdel_cmd_tpl" : "qdel {{ cluster_job_id }}",
+    "qinfo_cmd_tpl" : "qavail"
+}
