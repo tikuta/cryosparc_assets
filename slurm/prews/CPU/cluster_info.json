@@ -2,7 +2,7 @@
     "name" : "CPU",
     "worker_bin_path" : "/home/tikuta/local/src/cryosparc_worker/bin/cryosparcw",
     "cache_path" : "/scratch",
-    "send_cmd_tpl" : "ssh loginnode {{ command }}",
+    "send_cmd_tpl" : "{{ command }}",
     "qsub_cmd_tpl" : "sbatch {{ script_path_abs }}",
     "qstat_cmd_tpl" : "squeue -j {{ cluster_job_id }}",
     "qstat_code_cmd_tpl": "squeue -j {{ cluster_job_id }} --format=%T | sed -n 2p",

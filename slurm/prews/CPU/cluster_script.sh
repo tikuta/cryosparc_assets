@@ -23,7 +23,7 @@
 
 #SBATCH --job-name cryosparc_{{ project_uid }}_{{ job_uid }}
 #SBATCH -N 1
-#SBATCH -p=cpu
+#SBATCH -p cpu
 #SBATCH --ntasks-per-node={{ num_cpu }}
 #SBATCH --mem={{ (ram_gb*1000)|int }}M
 #SBATCH --output={{ job_dir_abs }}/slurm.out
