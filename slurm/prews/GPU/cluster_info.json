@@ -5,7 +5,7 @@
     "send_cmd_tpl" : "{{ command }}",
     "qsub_cmd_tpl" : "sbatch {{ script_path_abs }}",
     "qstat_cmd_tpl" : "squeue -j {{ cluster_job_id }}",
-    "qstat_code_cmd_tpl": "squeue --noheader -j {{ cluster_job_id } } --format=%T",
+    "qstat_code_cmd_tpl": "squeue --noheader -j {{ cluster_job_id }} --format=%T",
     "qdel_cmd_tpl" : "scancel {{ cluster_job_id }}",
     "qinfo_cmd_tpl" : "sinfo"
 }
