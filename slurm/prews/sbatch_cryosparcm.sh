@@ -7,7 +7,7 @@
 #SBATCH --mem=32G # 32/256 < 1/8 of the full node
 #SBATCH -o sbatch_cryosparcm.out
 #SBATCH --open-mode=append
-#SBATCH -d afterok:2104
+#SBATCH -d afterok:2138
 #SBATCH --nodelist=prews-cpu09
 
 CSM="/home/tikuta/local/src/cryosparc_master/bin/cryosparcm"
