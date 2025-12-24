@@ -1,7 +1,7 @@
 #/bin/bash
 set -eu
 
-RUN_AFTER="2129" # job id to wait
+RUN_AFTER="2130" # job id to wait
 NJOB=10 # cryosparc master will run for (NJOB * 36) hours
 JOBSCRIPT="sbatch_cryosparcm.sh"
 

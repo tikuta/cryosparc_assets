@@ -2,20 +2,23 @@
 #SBATCH -t 1-12:00:00
 #SBATCH -N 1
 #SBATCH -p cpu
-#SBATCH --job-name cryosparcm
+#SBATCH --job-name csmaster
 #SBATCH --ntasks-per-node=14 # 14/112 = 1/8 of the full node
 #SBATCH --mem=32G # 32/256 < 1/8 of the full node
 #SBATCH -o sbatch_cryosparcm.out
 #SBATCH --open-mode=append
-#SBATCH -d afterok:2138
+#SBATCH -d afterok:2279
 #SBATCH --nodelist=prews-cpu09
 
 CSM="/home/tikuta/local/src/cryosparc_master/bin/cryosparcm"
 RCLONE="/home/tikuta/local/src/rclone-v1.71.2-linux-amd64/rclone"
 
 START=$(date -u +%s)
+echo "=============================="
+date
+echo "=============================="
 
-echo "CryoSPARC master is running on ${HOSTNAME}"
+echo "CryoSPARC master job is running on ${HOSTNAME}"
 sed -i -e "s/^export CRYOSPARC_MASTER_HOSTNAME=.*$/export CRYOSPARC_MASTER_HOSTNAME=\"${HOSTNAME}\"/g"  ~/local/src/cryosparc_master/config.sh
 echo "CryoSPARC master started at $(date -u +%s)"
 $CSM start
