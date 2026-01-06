@@ -26,8 +26,7 @@
 #SBATCH -p gpu
 #SBATCH --ntasks-per-node={{ num_cpu }}
 #SBATCH --gres=gpu:{{ num_gpu }}
-##SBATCH --mem={{ (ram_gb*1000)|int }}M
-#SBATCH --mem=130G
+#SBATCH --mem={{ (num_gpu*120)|int }}G
 #SBATCH --output={{ job_dir_abs }}/slurm.out
 #SBATCH --error={{ job_dir_abs }}/slurm.err
 
