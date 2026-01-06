@@ -21,12 +21,13 @@
 ##
 ## What follows is a simple SLURM script:
 
-#SBATCH --job-name cryosparc_{{ project_uid }}_{{ job_uid }}
+#SBATCH --job-name CS_{{ project_uid }}_{{ job_uid }}
 #SBATCH -N 1
 #SBATCH -p gpu
 #SBATCH --ntasks-per-node={{ num_cpu }}
 #SBATCH --gres=gpu:{{ num_gpu }}
-#SBATCH --mem={{ (ram_gb*1000)|int }}M
+##SBATCH --mem={{ (ram_gb*1000)|int }}M
+#SBATCH --mem=130G
 #SBATCH --output={{ job_dir_abs }}/slurm.out
 #SBATCH --error={{ job_dir_abs }}/slurm.err
 

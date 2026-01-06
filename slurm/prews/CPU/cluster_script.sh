@@ -21,7 +21,7 @@
 ##
 ## What follows is a simple SLURM script:
 
-#SBATCH --job-name cryosparc_{{ project_uid }}_{{ job_uid }}
+#SBATCH --job-name CS_{{ project_uid }}_{{ job_uid }}
 #SBATCH -N 1
 #SBATCH -p cpu
 #SBATCH --ntasks-per-node={{ num_cpu }}

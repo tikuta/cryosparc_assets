@@ -7,14 +7,14 @@
 #SBATCH --mem=32G # 32/256 < 1/8 of the full node
 #SBATCH -o sbatch_cryosparcm.out
 #SBATCH --open-mode=append
-#SBATCH -d afterok:2445
+#SBATCH -d afterok:2471
 #SBATCH --nodelist=prews-cpu09
 
 START_AT=$(date -u +%s)
 TIME_LIMIT=$((36 * 60 * 60)) # Job time limit set above
 MAINTENANCE=$((60 * 60)) # Switch to maintenance mode 60 min before exit
 WAIT=$((15 * 60)) # 15 min margin for cryosparcm to stop
-END_AT=$(($START + $TIME_LIMIT))
+END_AT=$(($START_AT + $TIME_LIMIT))
 EXIT_AT=$(($END_AT - $WAIT))
 
 CSM="/home/tikuta/local/src/cryosparc_master/bin/cryosparcm"
@@ -45,7 +45,7 @@ $RCLONE copy /home/tikuta/local/src/cryosparc_database/backup pCloud:/cryosparc_
 echo "Rclone ended at $(date -u +%s)"
 
 NOW=$(date -u +%s)
-SLEEP_TIME=$(($START + $TIME_LIMIT - $NOW - $MAINTENANCE))
+SLEEP_TIME=$(($START_AT + $TIME_LIMIT - $NOW - $MAINTENANCE))
 
 echo "Sleep for $(($SLEEP_TIME / 60 / 60)) hours ($SLEEP_TIME seconds)"
 sleep $SLEEP_TIME
@@ -53,7 +53,7 @@ $CSM maintenancemode on
 echo "CryoSPARC is under maintenace"
 $CSM cli "set_instance_banner(True, 'Restart soon', 'CryoSPARC is under maintenance and will restart at $(date --date @${END_AT}). You may queue jobs, but the jobs will start after CryoSPARC restarts.')"
 NOW=$(date -u +%s)
-SLEEP_TIME=$(($START + $TIME_LIMIT - $NOW - $WAIT))
+SLEEP_TIME=$(($START_AT + $TIME_LIMIT - $NOW - $WAIT))
 sleep $SLEEP_TIME
 echo "CryoSPARC master start to stop at $(date -u +%s)"
 $CSM stop
