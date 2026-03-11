@@ -29,5 +29,6 @@
 #SBATCH --mem={{ (num_gpu*120)|int }}G
 #SBATCH --output={{ job_dir_abs }}/slurm.out
 #SBATCH --error={{ job_dir_abs }}/slurm.err
+#SBATCH --nodelist={{ node_list }}
 
 {{ run_cmd }}
